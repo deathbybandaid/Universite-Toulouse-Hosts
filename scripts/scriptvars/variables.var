@@ -3,6 +3,9 @@
 REPONAME="Universite-Toulouse-Hosts"
 DIRECTORYLOCATION=/etc/"$REPONAME"/
 
+## creds
+source /etc/"$REPONAME".var
+
 ## These are the colors used throughout the script.
 red='\e[1;31m%s\e[0m\n'
 green='\e[1;32m%s\e[0m\n'
@@ -22,3 +25,9 @@ LISTDIR="$DIRECTORYLOCATION"lists/
 TEMPDIR="$DIRECTORYLOCATION"temp/
   COMPRESSEDTEMPTAR="$TEMPDIR"compressedseventemporaryfile.tar.gz
 DOWNLOADEDDIR="$DIRECTORYLOCATION"downloaded/
+
+REPOOWNER=deathbybandaid
+
+GITREPOSITORYURL="github.com/"$REPOOWNER"/"$REPONAME".git"
+GITREPOSITORYURLB="https://github.com/"$REPOOWNER"/"$REPONAME".git"
+GITWHERETOPUSH=https://"$GITHUBUSERNAME":"$GITHUBPASSWORD"@"$GITREPOSITORYURL"
