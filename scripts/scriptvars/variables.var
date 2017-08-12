@@ -20,4 +20,5 @@ DIVIDERBARB="___________________________________________________________"
 LISTDIR="$DIRECTORYLOCATION"lists/
   ALLSTFILES="$LISTDIR"*.lst
 TEMPDIR="$DIRECTORYLOCATION"temp/
+  COMPRESSEDTEMPTAR="$TEMPDIR"compressedseventemporaryfile.tar.gz
 DOWNLOADEDDIR="$DIRECTORYLOCATION"downloaded/
