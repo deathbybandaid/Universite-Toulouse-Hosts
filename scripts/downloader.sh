@@ -102,11 +102,6 @@ fi
 if
 [[ -z $FULLSKIPPARSING && -f $DOWNLOADEDFILE ]]
 then
-rm $DOWNLOADEDFILE
-fi
-if
-[[ -z $FULLSKIPPARSING ]]
-then
 FETCHFILESIZE=$(stat -c%s "$DOWNLOADEDFILE")
 fi
 
