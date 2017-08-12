@@ -91,19 +91,35 @@ then
 printf "$cyan"    "Fetching Tar List From $UPCHECK Located At The IP Of "$SOURCEIP"."
 wget -q -O $COMPRESSEDTEMPTAR $source
 tar -xavf $COMPRESSEDTEMPTAR -C "$TEMPDIR"
-mv $EXTRACTEDDOMAINS $DOWNLOADEDFILE
+fi
+
+if
+[[ -z $FULLSKIPPARSING && -f $COMPRESSEDTEMPTAR ]]
+then
 rm $COMPRESSEDTEMPTAR
+fi
+
+if
+[[ -d "$EXTRACTEDTARDIR" ]]
+then
 rm -r $EXTRACTEDTARDIR
-HOWMANYLINES=$(echo -e "`wc -l $DOWNLOADEDFILE | cut -d " " -f 1`")
-ENDCOMMENT="$HOWMANYLINES Lines After Download."
-printf "$yellow"  "$ENDCOMMENT"
+fi
+
+if
+[[ -z $FULLSKIPPARSING && -f $EXTRACTEDDOMAINS ]]
+then
+mv $EXTRACTEDDOMAINS $DOWNLOADEDFILE
 fi
 
 if
 [[ -z $FULLSKIPPARSING && -f $DOWNLOADEDFILE ]]
 then
 FETCHFILESIZE=$(stat -c%s "$DOWNLOADEDFILE")
+HOWMANYLINES=$(echo -e "`wc -l $DOWNLOADEDFILE | cut -d " " -f 1`")
+ENDCOMMENT="$HOWMANYLINES Lines After Download."
+printf "$yellow"  "$ENDCOMMENT"
 fi
+
 
 if
 [[ -z $FULLSKIPPARSING && $FETCHFILESIZE == 0 ]]
