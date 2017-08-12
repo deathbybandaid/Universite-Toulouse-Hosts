@@ -94,6 +94,12 @@ tar -xavf $COMPRESSEDTEMPTAR -C "$TEMPDIR"
 fi
 
 if
+[[ -z $FULLSKIPPARSING && -f $EXTRACTEDDOMAINS ]]
+then
+mv $EXTRACTEDDOMAINS $DOWNLOADEDFILE
+fi
+
+if
 [[ -z $FULLSKIPPARSING && -f $COMPRESSEDTEMPTAR ]]
 then
 rm $COMPRESSEDTEMPTAR
@@ -106,12 +112,6 @@ rm -r $EXTRACTEDTARDIR
 fi
 
 if
-[[ -z $FULLSKIPPARSING && -f $EXTRACTEDDOMAINS ]]
-then
-mv $EXTRACTEDDOMAINS $DOWNLOADEDFILE
-fi
-
-if
 [[ -z $FULLSKIPPARSING && -f $DOWNLOADEDFILE ]]
 then
 FETCHFILESIZE=$(stat -c%s "$DOWNLOADEDFILE")
@@ -119,7 +119,6 @@ HOWMANYLINES=$(echo -e "`wc -l $DOWNLOADEDFILE | cut -d " " -f 1`")
 ENDCOMMENT="$HOWMANYLINES Lines After Download."
 printf "$yellow"  "$ENDCOMMENT"
 fi
-
 
 if
 [[ -z $FULLSKIPPARSING && $FETCHFILESIZE == 0 ]]
@@ -138,6 +137,9 @@ done
 
 printf "$magenta" "$DIVIDERBAR"
 echo ""
+
+unset FULLSKIPPARSING
+unset FILESIZEZERO
 
 done
 
