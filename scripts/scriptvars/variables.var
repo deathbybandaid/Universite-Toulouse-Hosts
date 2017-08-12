@@ -1,7 +1,7 @@
 ## Vars go here
 
 REPONAME="Universite-Toulouse-Hosts"
-DIRECTORYLOCATION=/etc/"$REPONAME"/
+REPODIR=/etc/"$REPONAME"/
 
 ## creds
 source /etc/"$REPONAME".var
@@ -20,11 +20,11 @@ DIVIDERBAR="___________________________________________________________"
 DIVIDERBARB="___________________________________________________________"
 
 ## Directories
-LISTDIR="$DIRECTORYLOCATION"lists/
+LISTDIR="$REPODIR"lists/
   ALLSTFILES="$LISTDIR"*.lst
-TEMPDIR="$DIRECTORYLOCATION"temp/
+TEMPDIR="$REPODIR"temp/
   
-DOWNLOADEDDIR="$DIRECTORYLOCATION"downloaded/
+DOWNLOADEDDIR="$REPODIR"downloaded/
 
 REPOOWNER=deathbybandaid
 
